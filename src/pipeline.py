@@ -76,7 +76,7 @@ def cleansing(df):
 
 def transform(df):
     numeric_cols = df.select_dtypes(include="number").columns
-    categorical_cols = df.select_dtypes(include=["object", "category"]).columns
+    categorical_cols = df.select_dtypes(include=["object", "category", "string"]).columns
 
     scaler = MinMaxScaler()
     df[numeric_cols] = scaler.fit_transform(df[numeric_cols])
