@@ -41,6 +41,12 @@ def check_unique(df, col_name):
 
 
 def cleansing(df):
+
+    df["transaction_date"] = pd.to_datetime(df["transaction_date"],
+    format="mixed",
+    dayfirst=True,
+    errors="coerce")
+    
     numeric_cols = df.select_dtypes(include="number").columns
     categorical_cols = df.select_dtypes(include=["object", "category"]).columns
     for col in categorical_cols:
